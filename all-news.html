@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crypto News</title>
+    <title>Crypto News & Bitcoin Price</title>
     <style>
         body {
             margin: 0;
@@ -33,35 +33,22 @@
         nav a:hover {
             text-decoration: underline;
         }
-        .news-container {
+        .container {
             padding: 20px;
         }
-        .filters {
-            margin-bottom: 20px;
-            display: flex;
-            gap: 10px;
-        }
-        .filters select, .filters input {
+        .price-box {
             background-color: #1b2028;
-            color: #ffffff;
+            padding: 20px;
             border: 1px solid #ffffff;
-            padding: 5px;
-            font-size: 1rem;
-            border-radius: 5px;
-        }
-        .filters button {
-            background-color: #ffffff;
-            color: #1b2028;
-            border: none;
-            padding: 5px 10px;
-            font-size: 1rem;
-            cursor: pointer;
-            border-radius: 5px;
+            border-radius: 8px;
+            display: inline-block;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
         }
         .news-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
+            margin-top: 20px;
         }
         .news-table th, .news-table td {
             border: 1px solid #ffffff;
@@ -85,14 +72,18 @@
 </head>
 <body>
     <header>
-        Crypto News
+        Crypto News & Bitcoin Price
     </header>
     <nav>
         <a href="index.html">Home</a>
         <a href="what-is-crypto.html">What is Crypto?</a>
         <a href="all-news.html">News</a>
     </nav>
-    <div class="news-container">
+    <div class="container">
+        <div class="price-box">
+            <p>Current Bitcoin Price: <span id="btc-price">Loading...</span></p>
+            <p>Retrieved At: <span id="retrieved-time">Loading...</span></p>
+        </div>
         <table class="news-table" id="news-table">
             <thead>
                 <tr>
@@ -113,14 +104,36 @@
         <p>&copy; 2024 Cryptoradar. All rights reserved.</p>
     </footer>
     <script>
-        const API_KEY = "72fca34fe3b24b739cee847f10fef969";
-        const URL = `https://newsapi.org/v2/everything?q=crypto&apiKey=${API_KEY}`;
+        const API_KEY = "c1d43ca9-75bd-486c-8c02-e42b601a5e01";
+        const BTC_URL = `https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=BTC&CMC_PRO_API_KEY=${API_KEY}`;
+        const NEWS_URL = `https://newsapi.org/v2/everything?q=crypto&apiKey=72fca34fe3b24b739cee847f10fef969`;
+
+        async function fetchBitcoinPrice() {
+            try {
+                const response = await fetch(BTC_URL);
+                const data = await response.json();
+                
+                if (data.status && data.status.error_code === 0) {
+                    const btcPrice = data.data.BTC.quote.USD.price.toFixed(2);
+                    const retrievedTime = new Date().toLocaleString();
+                    
+                    document.getElementById('btc-price').textContent = `$${btcPrice}`;
+                    document.getElementById('retrieved-time').textContent = retrievedTime;
+                } else {
+                    document.getElementById('btc-price').textContent = "Error retrieving price";
+                    console.error("API Error:", data.status);
+                }
+            } catch (error) {
+                document.getElementById('btc-price').textContent = "Error retrieving price";
+                console.error("Error fetching Bitcoin price:", error);
+            }
+        }
 
         async function fetchCryptoNews() {
             try {
-                const response = await fetch(URL);
+                const response = await fetch(NEWS_URL);
                 const data = await response.json();
-
+                
                 if (data.status === "ok") {
                     const newsBody = document.getElementById('news-body');
                     newsBody.innerHTML = ''; // Clear existing rows
@@ -143,7 +156,8 @@
             }
         }
 
-        // Fetch crypto news on page load
+        // Fetch Bitcoin price and crypto news on page load
+        fetchBitcoinPrice();
         fetchCryptoNews();
     </script>
 </body>
