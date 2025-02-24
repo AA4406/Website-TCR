@@ -106,10 +106,10 @@
     </footer>
     <script>
         const API_KEY = "c1d43ca9-75bd-486c-8c02-e42b601a5e01";
-        const PRICES_URL = `https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=BTC,ETH,BNB,XRP,ADA&convert=USD&CMC_PRO_API_KEY=${API_KEY}`;
+        const PRICES_URL = `https://pro-api.coinmarketcap.com/v1/exchange/quotes/latest?type=dex&CMC_PRO_API_KEY=${API_KEY}`;
         const NEWS_URL = `https://newsapi.org/v2/everything?q=crypto&apiKey=72fca34fe3b24b739cee847f10fef969`;
 
-        async function fetchCryptoPrices() {
+        async function fetchDEXPrices() {
             try {
                 const response = await fetch(PRICES_URL, { headers: { 'Accept': 'application/json' } });
                 const data = await response.json();
@@ -134,7 +134,7 @@
                     console.error("API Error:", data.status);
                 }
             } catch (error) {
-                console.error("Error fetching crypto prices:", error);
+                console.error("Error fetching DEX prices:", error);
             }
         }
 
@@ -166,7 +166,7 @@
         }
 
         // Fetch prices and news on page load
-        fetchCryptoPrices();
+        fetchDEXPrices();
         fetchCryptoNews();
     </script>
 </body>
