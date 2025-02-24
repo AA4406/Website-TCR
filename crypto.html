@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Overview</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0d1117;
+            color: #ffffff;
+        }
+        header {
+            background-color: #161b22;
+            padding: 20px;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            background-color: #1b2028;
+        }
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2rem;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            padding: 20px;
+        }
+        .crypto-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .crypto-table th, .crypto-table td {
+            border: 1px solid #ffffff;
+            padding: 10px;
+            text-align: left;
+            color: #ffffff;
+        }
+        .crypto-table th {
+            background-color: #161b22;
+        }
+        .crypto-table tbody tr:hover {
+            background-color: #1b2028;
+        }
+        .market-cap-link {
+            display: block;
+            margin-top: 10px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1rem;
+            text-align: right;
+        }
+        .market-cap-link:hover {
+            text-decoration: underline;
+        }
+        .profit-positive {
+            color: #00ff00;
+        }
+        .profit-negative {
+            color: #ff0000;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #161b22;
+            color: #ffffff;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Crypto Overview
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="what-is-crypto.html">What is Crypto?</a>
+        <a href="all-news.html">News</a>
+        <a href="community.html">Community</a>
+        <a href="crypto.html">Crypto</a>
+    </nav>
+    <div class="container">
+        <h2>Crypto Market Cap Ranking</h2>
+        <table class="crypto-table">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Price & Change</th>
+                    <th>Market Cap</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Bitcoin (BTC)</td>
+                    <td>$99,207.74 <span class="profit-positive">+0.68%</span></td>
+                    <td>$1.96T</td>
+                </tr>
+                <tr>
+                    <td>Ethereum (ETH)</td>
+                    <td>$3,490.59 <span class="profit-positive">+0.05%</span></td>
+                    <td>$420.69B</td>
+                </tr>
+                <tr>
+                    <td>Tether (USDT)</td>
+                    <td>$0.99915 <span class="profit-negative">-0.01%</span></td>
+                    <td>$139.3B</td>
+                </tr>
+                <tr>
+                    <td>XRP</td>
+                    <td>$2.2951 <span class="profit-negative">-1.10%</span></td>
+                    <td>$131.39B</td>
+                </tr>
+                <tr>
+                    <td>BNB</td>
+                    <td>$701.67 <span class="profit-positive">+0.82%</span></td>
+                    <td>$101.09B</td>
+                </tr>
+                <tr>
+                    <td>Solana (SOL)</td>
+                    <td>$197.32 <span class="profit-positive">+0.22%</span></td>
+                    <td>$94.7B</td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="#" class="market-cap-link">See all coins</a>
+    </div>
+    <footer>
+        <p>Cryptoradar - Your source for cryptocurrency insights.</p>
+        <p>&copy; 2024 Cryptoradar. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+

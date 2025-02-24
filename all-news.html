@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto News</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0d1117;
+            color: #ffffff;
+        }
+        header {
+            background-color: #161b22;
+            padding: 20px;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            background-color: #1b2028;
+        }
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2rem;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .news-container {
+            padding: 20px;
+        }
+        .filters {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        .filters select, .filters input {
+            background-color: #1b2028;
+            color: #ffffff;
+            border: 1px solid #ffffff;
+            padding: 5px;
+            font-size: 1rem;
+            border-radius: 5px;
+        }
+        .filters button {
+            background-color: #ffffff;
+            color: #1b2028;
+            border: none;
+            padding: 5px 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .news-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .news-table th, .news-table td {
+            border: 1px solid #ffffff;
+            padding: 10px;
+            text-align: left;
+        }
+        .news-table th {
+            background-color: #161b22;
+        }
+        .news-table tbody tr:hover {
+            background-color: #1b2028;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #161b22;
+            color: #ffffff;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Crypto News
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="what-is-crypto.html">What is Crypto?</a>
+        <a href="all-news.html">News</a>
+    </nav>
+    <div class="news-container">
+        <table class="news-table" id="news-table">
+            <thead>
+                <tr>
+                    <th>Published At</th>
+                    <th>Source</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Link</th>
+                </tr>
+            </thead>
+            <tbody id="news-body">
+                <!-- Dynamic rows will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+    <footer>
+        <p>Cryptoradar - Your source for the latest cryptocurrency news and trends.</p>
+        <p>&copy; 2024 Cryptoradar. All rights reserved.</p>
+    </footer>
+    <script>
+        const API_KEY = "72fca34fe3b24b739cee847f10fef969";
+        const URL = `https://newsapi.org/v2/everything?q=crypto&apiKey=${API_KEY}`;
+
+        async function fetchCryptoNews() {
+            try {
+                const response = await fetch(URL);
+                const data = await response.json();
+
+                if (data.status === "ok") {
+                    const newsBody = document.getElementById('news-body');
+                    newsBody.innerHTML = ''; // Clear existing rows
+
+                    data.articles.forEach(article => {
+                        const row = `<tr>
+                            <td>${new Date(article.publishedAt).toLocaleString()}</td>
+                            <td>${article.source.name}</td>
+                            <td>${article.title}</td>
+                            <td>${article.description || "No description available."}</td>
+                            <td><a href="${article.url}" target="_blank" style="color: #ffffff; text-decoration: underline;">Read more</a></td>
+                        </tr>`;
+                        newsBody.innerHTML += row;
+                    });
+                } else {
+                    console.error("Error fetching news:", data.message);
+                }
+            } catch (error) {
+                console.error("Error fetching news:", error);
+            }
+        }
+
+        // Fetch crypto news on page load
+        fetchCryptoNews();
+    </script>
+</body>
+</html>

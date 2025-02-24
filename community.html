@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0d1117;
+            color: #ffffff;
+        }
+        header {
+            background-color: #161b22;
+            padding: 20px;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            background-color: #1b2028;
+        }
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2rem;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            padding: 20px;
+        }
+        .section {
+            margin-bottom: 40px;
+            border: 1px solid #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px #ffffff;
+        }
+        .section h2 {
+            margin-bottom: 15px;
+        }
+        .social-links a {
+            display: inline-block;
+            margin: 5px 10px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+        .feedback-form input, .feedback-form textarea, .newsletter-form input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ffffff;
+            border-radius: 5px;
+            background-color: #1b2028;
+            color: #ffffff;
+        }
+        .feedback-form button, .newsletter-form button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #ffffff;
+            color: #1b2028;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .feedback-form button:hover, .newsletter-form button:hover {
+            background-color: #bbbbbb;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #161b22;
+            color: #ffffff;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Community
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="what-is-crypto.html">What is Crypto?</a>
+        <a href="all-news.html">News</a>
+        <a href="community.html">Community</a>
+    </nav>
+    <div class="container">
+        <!-- Social Media Section -->
+        <div class="section">
+            <h2>Connect with Us on Social Media</h2>
+            <div class="social-links">
+                <a href="https://www.snapchat.com" target="_blank">Snapchat</a>
+                <a href="https://twitter.com" target="_blank">X</a>
+                <a href="https://telegram.org" target="_blank">Telegram</a>
+                <a href="https://www.youtube.com" target="_blank">YouTube</a>
+            </div>
+        </div>
+        
+        <!-- Discussion Section -->
+        <div class="section">
+            <h2>Join the Discussion</h2>
+            <p>Participate in our community discussions and share your thoughts on the latest trends in cryptocurrency.</p>
+            <a href="https://forum.example.com" target="_blank" style="color: #ffffff;">Visit the Community Forum</a>
+        </div>
+        
+        <!-- Rules and Guidelines Section -->
+        <div class="section">
+            <h2>Community Rules and Guidelines</h2>
+            <ul>
+                <li>Be respectful to others.</li>
+                <li>No spamming or advertising.</li>
+                <li>Stay on topic.</li>
+                <li>Report inappropriate behavior to moderators.</li>
+            </ul>
+        </div>
+        
+        <!-- Newsletter Signup Section -->
+        <div class="section newsletter-form">
+            <h2>Subscribe to Our Newsletter</h2>
+            <p>Get the latest updates and insights straight to your inbox.</p>
+            <form action="/subscribe" method="post">
+                <input type="email" name="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+        
+        <!-- Feedback and Suggestions Section -->
+        <div class="section feedback-form">
+            <h2>Feedback and Suggestions</h2>
+            <p>We value your input! Let us know how we can improve.</p>
+            <form action="/feedback" method="post">
+                <textarea name="feedback" rows="5" placeholder="Write your feedback here" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <p>Cryptoradar - Building a stronger community for crypto enthusiasts.</p>
+        <p>&copy; 2024 Cryptoradar. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
